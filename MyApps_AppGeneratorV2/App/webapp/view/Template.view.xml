@@ -1,0 +1,12 @@
+<mvc:View 
+    controllerName="myApps.{{ProjectName}}.controller.{{Template}}" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+    class="sapUiSizeCompact"
+	xmlns:html="http://www.w3.org/1999/xhtml" 
+    displayBlock="true">
+	<Page title="{i18n>title}">
+		<content>
+        </content>
+	</Page>
+</mvc:View>

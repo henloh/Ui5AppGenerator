@@ -1,0 +1,4 @@
+<mvc:View controllerName="myApps.AppGenerator.controller.App" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:html="http://www.w3.org/1999/xhtml" displayBlock="true">
+	<App id="appFrame"></App>
+</mvc:View>

@@ -1,0 +1,42 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core" >
+	<Dialog
+		contentHeight="80%"
+		title="__i18n_anpassen__{i18n>ValueHelpTitle}">
+		<content>
+
+            <SearchField
+                liveChange="onSearch"
+                width="100%" />
+
+			<List
+				items="{
+                    path: '/',
+                    parameters: {
+                        'select': '__Attribut__'
+                    }
+                }"
+				selectionChange="onSelectionChange"
+				mode="MultiSelect"
+				includeItemInSelection="true" >
+				<items>
+					<StandardListItem
+						title="{__VALUE__}"
+						iconDensityAware="false"
+						iconInset="false" />
+				</items>
+			</List>
+            			
+		</content>
+		<buttons>
+			<Button
+				text="Bestätigen"
+                type="Accept"
+				press="submitCreate"/>
+			<Button
+				text="Abbrechen"
+				press="cancleCreate"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

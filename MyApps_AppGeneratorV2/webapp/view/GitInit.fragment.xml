@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core" >
+	<Dialog
+        id="dlgGitInit"
+		contentHeight="80px"
+		title="Git">
+		<content>
+
+            <Label
+                text="URL:"
+                class="pad5Proz lmargtop" />
+            <Input
+                width="90%"
+                class="pad5Proz"
+                value="{git>Url}"
+                showSuggestion="false">
+            </Input>
+			
+		</content>
+		<buttons>
+			<Button
+				text="Init Git"
+                type="Accept"
+				press="onGitInit"/>
+			<Button
+				text="Abbrechen"
+				press="onCloseGitInit"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
