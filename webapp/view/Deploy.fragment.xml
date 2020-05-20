@@ -1,0 +1,58 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core" >
+	<Dialog
+        id="dlgDeploy"
+		contentHeight="280px"
+		title="Deploy">
+		<content>
+
+            <Label
+                text="Paket"
+                class="pad5Proz lmargtop" />
+            <Input
+                width="90%"
+                class="pad5Proz"
+                value="{deploy>package}"
+                showSuggestion="false">
+            </Input>
+            <Label
+                text="Anwendung"
+                class="pad5Proz lmargtop" />
+            <Input
+                width="90%"
+                class="pad5Proz"
+                value="{deploy>bsp}"
+                showSuggestion="false">
+            </Input>
+            <Label
+                text="Beschreibung"
+                class="pad5Proz lmargtop" />
+            <Input
+                width="90%"
+                class="pad5Proz"
+                value="{deploy>bsptext}"
+                showSuggestion="false">
+            </Input>
+            <Label
+                text="Transport"
+                class="pad5Proz lmargtop" />
+            <Input
+                width="90%"
+                class="pad5Proz"
+                value="{deploy>transport}"
+                showSuggestion="false">
+            </Input>
+			
+		</content>
+		<buttons>
+			<Button
+				text="Deploy"
+                type="Accept"
+				press="onDeploy"/>
+			<Button
+				text="Abbrechen"
+				press="onCloseDeploy"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,47 @@
+specVersion: '1.0'
+metadata:
+  name: {{ProjectName}}
+type: application
+server:
+  customMiddleware:
+    - name: odataProxy
+      beforeMiddleware: serveResources
+resources:   
+  configuration:     
+    propertiesFileSourceEncoding: "UTF-8"
+builder:
+  bundles:
+  - bundleDefinition:
+      name: {{ProjectName}}/Component-preload.js
+      defaultFileTypes:
+      - ".js"
+      - ".json"
+      - ".xml"
+      - ".html"
+      - ".library"
+      sections:
+      - mode: raw
+        filters:
+        - runtime.js
+      - mode: preload
+        filters:
+        - webapp/manifest.json
+        - webapp/controller/**
+        - webapp/Component.js
+        - webapp/i18n/**
+        - webapp/model/**
+        - webapp/ui5fixes/**
+        - webapp/util/**
+        - webapp/view/**
+        - webapp/extra/**
+        - webapp/libs/**
+        - webapp/test/**
+        - webapp/service/**
+        - webapp/state/**
+        - webapp/localService/**
+        resolve: false
+        sort: true
+        declareModules: false
+    bundleOptions:
+      optimize: true
+      usePredefineCalls: true
