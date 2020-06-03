@@ -1,3 +1,12 @@
+# AppGen
+
+The AppGenerator is used to create Ui5 Apps. It contains a template app that is copied and the files that contain the project name get changed. A simple proxy (http capable) is used to connect to the odata services of the gateway. The template app is customizable but the files need to be included in the code. It works a bit like the ui5 tooling but is not limited to one app at the time and brings a few other features. The current functions include adding services, views and dialogs to existing apps, creating new apps, building the app and deploying apps to the gateway. Ui5 tooling is installed and used to build the apps. Thanks to the guys over there, they do wonderful work! If you programm Ui5 apps yourself you will understand the code of this app as well, just take a look :)
+
+Is is based on node.js and express. Customise as much as you need to make it work for you. I want to make the apps work offline as well. To achieve self-sufficient apps I have to use the ui5 toolinge serve. You could klick on an app, the tooling will kick in, and host it parallel to the AppGenerator.
+
+Most likly the best thing would be to pack my management tools into a middleware extension, but I work alone and don't have to knowledge to do that. If someone want to help me with that please let me know, I would love to do that!
+
+
 # Installation
 
 For the installation only node.js is required and the cli has to be available. The following packages are in use.
@@ -13,11 +22,12 @@ Dont forget the **npm install** after downloading the AppGen.
 
 Relocate the **start.bat** to the main Folder.
 Fill the .env File:
-GW_USR=
-GW_PWD=
-GW_URL= (No Port / https)
-HOST=
-WORKDIR=
+
+    GW_USR=
+    GW_PWD=
+    GW_URL= (No Port / https)
+    HOST=
+    WORKDIR=
 
 The "work-dir" is pointing at the folder where the start.bat / AppGen is saved. For example "\\Documents\\Git\\", the user dependet part is solved via the node module OS and its *homedir* funktion (see Index.js app.zWorkDir).
 
