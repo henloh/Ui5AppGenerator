@@ -11,8 +11,8 @@ const lib = require("./lib/libloader")
 const path = require("path")
 const fs = require("fs")
 
-// the file gwlogin is ignored by the .gitignore
-const gwlogin = require("./gwlogin")
+// .env is ignored by the .gitignore
+require("dotenv").config()
 
 // local webserver port
 const port = 443
@@ -21,14 +21,14 @@ const proxy_cfg = {
     // the prefix you use to call your backend functions via the proxy server
     prefix: "/",
     // the host of your gateway server
-    target: "https://" + gwlogin.target() + "/",
+    target: "https://" + process.env.GW_URL + "/",
     // port of your gateway server
     port: "44300",
     secure: false,
     headers: {
-        host: gwlogin.hostname()
+        host: process.env.HOST
     },
-    auth: gwlogin.init()
+    auth: process.env.GW_USR + ":" + process.env.GW_PWD
 }
 // Create the proxy
 var proxy = httpProxy.createProxyServer(proxy_cfg)
@@ -36,6 +36,8 @@ var proxy = httpProxy.createProxyServer(proxy_cfg)
 var app = express()
 app.use(express.static("./"))
 app.use(bodyParser.urlencoded({extended: true}))
+
+app.zWorkDir = require("os").homedir() + process.env.WORKDIR
 
 initHelpers = () => {
     // extend the app
@@ -70,9 +72,7 @@ app.use("/sap", (request, response) => {
 app.use((req, res, next) => {
     // -----------------------------------------------------------------------
     // authentication middleware
-    var lg = gwlogin.init()
-    lg = lg.split(':')
-    const auth = {login: lg[0], password: lg[1]} // change this
+    const auth = {login: process.env.GW_USR, password: process.env.GW_PWD} 
 
     // parse login and password from headers
     const b64auth = (req.headers.authorization || '').split(' ')[1] || ''

@@ -12,9 +12,14 @@ For the installation only node.js is required and the cli has to be available. T
 Dont forget the **npm install** after downloading the AppGen.
 
 Relocate the **start.bat** to the main Folder.
-Copy the  **gwlogin PreView.js** or rename it to **gwlogin.js**. Insert the login and system information. The file **gwlogin.js** is part of the *.gitignore*.
+Fill the .env File:
+GW_USR=
+GW_PWD=
+GW_URL= (No Port / https)
+HOST=
+WORKDIR=
 
-The work-dir in is pointing at the folder where the start.bat / AppGen is saved.
+The "work-dir" is pointing at the folder where the start.bat / AppGen is saved. For example "\\Documents\\Git\\", the user dependet part is solved via the node module OS and its *homedir* funktion (see Index.js app.zWorkDir).
 
 # Folder Structure
 -----------------Location of start.bat....
@@ -42,13 +47,14 @@ If you start it with the batch file, your standard browser opens and the node.js
 
 This is not a fully build git helper. It only covers the basic function. Those are mostly automated.
 If you open the git helper after creating a new app you have to provide the url to the repository.
-You need to have an accessible connection to your git server. I use a tfs in combination with a local git client that provied the login credentials.
+You need to have an accessible connection to your git server. I use a tfs in combination with a local git client that is providing the login credentials.
 The url to your repository is saved in you project in the file *zProjInfo.json* and the variable *gitInitialized* is set to true. When you entered a correct url and press init git the app will get staged, commited and pushed (origin/master).
-After the initial git push you can enter the commit messages in the git panel (same button). The commit and push button stages all changes, commits them and then and uses the git status to check for pull/merge information. After comitting it pulls and trys to merge on its own. If something does not work it hopefully shows the git status underneath the message field.
+After the initial git push you can enter the commit messages in the git panel (same button). The commit and push button stages all changes, commits them and uses the git status to check for pull/merge information. A git pull is executed before the push. If something isn't working the git status shows underneath the message field.
 
 # Planned features
-- Ui5core.js local
 - mockgen (work in progress)
-- better placeholder using (kinda improved with counting)
 - editable namespace (currently fix in template app)
 - translate the readme to english (fehlgeschlagen)
+
+- better placeholder using (done)
+- Ui5core.js local (scrapped)

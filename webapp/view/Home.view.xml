@@ -7,11 +7,6 @@
 	controllerName="myApps.AppGenerator.controller.Home">
 <Page title="{i18n>title}">
     <headerContent>
-        <Button 
-            text="TimeCalc"
-            class="sapUiTinyMargin"
-            press="onOpenDlg('Time', 'SimpelTime')">
-        </Button>
     </headerContent> 
     <content>
     	<f:SimpleForm minWidth="1024" editable="true" 
